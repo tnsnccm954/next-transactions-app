@@ -22,8 +22,8 @@ return new class extends Migration
 
             $table->decimal('price', 16, 2);
             $table->decimal('quantity', 16, 2);
-            $table->decimal('minimum', 16, 2);
-            $table->decimal('maximum', 16, 2);
+            $table->decimal('minimum', 16, 2)->default(0.01);
+            $table->decimal('maximum', 16, 2)->nullable();
             $table->integer('limit_transaction_time')->nullable();
             $table->timestamps();
         });

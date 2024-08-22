@@ -5,17 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Currency extends Model
+class PaymentMethod extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'currency_type_id',
         'name',
-        'code',
         'default_display_name',
-        'is_default',
+        'description',
         'is_active',
+        'transaction_fee',
+    ];
+
+    protected $hidden = [
+        'created_at',
+        'updated_at',
     ];
 
     public function currencyType()

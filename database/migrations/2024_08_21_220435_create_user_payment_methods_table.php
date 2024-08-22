@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignUuid('user_id')->constrained('users','id')->onDelete('cascade');
             $table->foreignId('payment_method_id')->constrained('payment_methods','id')->onDelete('cascade');
+            $table->foreignUuid('wallet_id')->constrained('wallets','id')->onDelete('cascade')->nullable();
             $table->string('display_name',255);
             $table->string('account_holder_name',255);
             $table->json('account_details');

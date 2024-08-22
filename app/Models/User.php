@@ -33,6 +33,7 @@ class User extends Authenticatable
         'username',
         'email',
         'password',
+        'is_active',
     ];
 
     /**
@@ -67,5 +68,10 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function wallets() 
+    {
+        return $this->hasMany(Wallet::class);
     }
 }

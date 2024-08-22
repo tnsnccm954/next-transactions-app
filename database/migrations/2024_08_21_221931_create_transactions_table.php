@@ -24,7 +24,7 @@ return new class extends Migration
             $table->decimal('amount', 16, 2);
 
             // $table->dateTimeTz('started_at');
-            $table->dateTimeTz('exipred_at')->nullable();
+            $table->dateTimeTz('expires_at')->nullable();
 
             $table->timestamps();
         });
