@@ -11,17 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('wallets', function (Blueprint $table) {
-            $table->uuid('id');
+        Schema::create('user_payment_methods', function (Blueprint $table) {
+            $table->id();
             $table->foreignUuid('user_id')->constrained('users','id')->onDelete('cascade');
-            $table->foreignId('currency_id')->constrained('currencies','id')->onDelete('cascade');
-            $table->string('address');
-            $table->decimal('balance', 16, 2);
+            $table->foreignId('payment_method_id')->constrained('payment_methods','id')->onDelete('cascade');
+            $table->string('display_name',255);
+            $table->string('account_holder_name',255);
+            $table->json('account_details');
             $table->boolean('is_default')->default(false);
             $table->boolean('is_active')->default(true);
-            $table->boolean('is_locked')->default(false);
-            $table->timestamp('locked_at')->nullable();
-            $table->timestamp('unlocked_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('wallets');
+        Schema::dropIfExists('user_payment_methods');
     }
 };

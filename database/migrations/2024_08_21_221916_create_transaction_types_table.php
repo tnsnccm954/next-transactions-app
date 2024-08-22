@@ -11,14 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('currencies', function (Blueprint $table) {
+        Schema::create('transaction_types', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('currency_type_id')->constrained('currency_types','id')->onDelete('cascade');
+            // Deposit Withdrawal Buy Sell
             $table->string('name',255);
-            $table->string('code',15)->unique();
             $table->string('default_display_name',255);
-            $table->boolean('is_default')->default(false);
-            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }
@@ -28,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('currencies');
+        Schema::dropIfExists('transaction_types');
     }
 };
