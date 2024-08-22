@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('payment_methods', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('currency_type_id')->constrained('current_types','id');
+            $table->foreignId('currency_type_id')->constrained('currency_types','id');
             $table->string('name',255);
+            $table->string('code',15);
             $table->string('default_display_name',255);
-            $table->string('description',255);
+            $table->string('description',255)->nullable();
             $table->boolean('is_active')->default(true);
             $table->decimal('transaction_fee', 8, 2)->default(0);
             $table->timestamps();

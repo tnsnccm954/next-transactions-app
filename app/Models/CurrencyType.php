@@ -18,4 +18,14 @@ class CurrencyType extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function currencies()
+    {
+        return $this->hasMany(Currency::class);
+    }
+
+    public function paymentMethods()
+    {
+        return $this->hasMany(PaymentMethod::class);
+    }   
 }
