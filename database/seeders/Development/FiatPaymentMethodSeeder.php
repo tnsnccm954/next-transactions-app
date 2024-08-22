@@ -38,7 +38,7 @@ class FiatPaymentMethodSeeder extends Seeder
 
         foreach ($paymentMethods as $paymentMethod) {
             $paymentMethod['currency_type_id'] = $fiatCurrenyType->id;
-            \App\Models\PaymentMethod::create($paymentMethod);
+            \App\Models\PaymentMethod::firstOrCreate(['name' => $paymentMethod['name']], $paymentMethod);
         }
     }
 }

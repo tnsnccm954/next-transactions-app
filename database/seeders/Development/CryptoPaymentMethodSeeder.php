@@ -32,7 +32,7 @@ class CryptoPaymentMethodSeeder extends Seeder
 
         foreach ($paymentMethods as $paymentMethod) {
             $paymentMethod['currency_type_id'] = $cryptoCurrenyType->id;
-            \App\Models\PaymentMethod::create($paymentMethod);
+            \App\Models\PaymentMethod::firstOrCreate(['name' => $paymentMethod['name']], $paymentMethod);
         }
         // Add any additional properties or relationships to the $cryptoPaymentMethod if needed
 
