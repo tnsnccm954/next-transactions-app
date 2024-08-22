@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('transaction_states', function (Blueprint $table) {
             $table->id();
+            // waiting confirmed rejected
             $table->string('name',255);
             $table->string('default_display_name',255);
             $table->timestamps();

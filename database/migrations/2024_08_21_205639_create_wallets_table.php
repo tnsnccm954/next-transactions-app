@@ -19,9 +19,6 @@ return new class extends Migration
             $table->decimal('balance', 16, 2);
             $table->boolean('is_default')->default(false);
             $table->boolean('is_active')->default(true);
-            $table->boolean('is_locked')->default(false);
-            $table->timestamp('locked_at')->nullable();
-            $table->timestamp('unlocked_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
