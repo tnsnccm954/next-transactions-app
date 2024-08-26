@@ -15,7 +15,7 @@ class Transaction extends Model
         'transaction_type_id',
         'transaction_state_id',
         'sender_wallet_id',
-        'receiver_wallet_id ',
+        'receiver_wallet_id',
         'user_id',
         'amount',
         'transaction_fee',

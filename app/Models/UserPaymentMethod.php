@@ -12,10 +12,10 @@ class UserPaymentMethod extends Model
     protected $fillable = [
         'user_id',
         'payment_method_id',
-        'wallet_id',
+        // 'wallet_id',
         'display_name',
         'account_holder_name',
-        'account_details ',
+        'account_details',
         'is_default',
         'is_active',
     ];
@@ -30,8 +30,8 @@ class UserPaymentMethod extends Model
         return $this->belongsTo(PaymentMethod::class);
     }
 
-    public function wallet()
-    {
-        return $this->belongsTo(Wallet::class);
-    }
+    // public function wallet()
+    // {
+    //     return $this->belongsTo(Wallet::class);
+    // }
 }

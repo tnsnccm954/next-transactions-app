@@ -74,4 +74,19 @@ class User extends Authenticatable
     {
         return $this->hasMany(Wallet::class);
     }
+
+    public function paymentMethods() 
+    {
+        return $this->hasMany(UserPaymentMethod::class);
+    }
+
+    public function defaultPaymentMethod() 
+    {
+        return $this->hasOne(UserPaymentMethod::class)->where('is_default', true);
+    }
+
+    public function defaultWallet() 
+    {
+        return $this->hasOne(Wallet::class)->where('is_default', true);
+    }
 }

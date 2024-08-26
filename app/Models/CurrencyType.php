@@ -11,7 +11,7 @@ class CurrencyType extends Model
 
     protected $fillable = [
         'name',
-        'default_display_name ',
+        'default_display_name',
     ];
 
     protected $hidden = [
