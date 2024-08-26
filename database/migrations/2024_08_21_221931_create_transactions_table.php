@@ -12,13 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('transactions', function (Blueprint $table) {
-            $table->uuid('id');
+            $table->uuid('id')->primary();
             $table->foreignUuid('user_id')->constrained('users','id');
             $table->foreignId('transaction_type_id')->constrained('transaction_types','id');
             $table->foreignId('transaction_state_id')->constrained('transaction_states','id');
             // we will know currency from wallet
-            $table->foreignUuid('sender_wallet_id ')->constrained('wallets','id');
-            $table->foreignUuid('receiver_wallet_id')->constrained('wallets','id')->nulable();
+            $table->foreignUuid('sender_wallet_id ')->constrained('wallets','id')->onDelete('no action');
+            $table->foreignUuid('receiver_wallet_id')->constrained('wallets','id')->nulable()->onDelete('no action');
 
             $table->decimal('transaction_fee', 16, 2)->nullable()->default(null);
             $table->decimal('amount', 16, 2);
