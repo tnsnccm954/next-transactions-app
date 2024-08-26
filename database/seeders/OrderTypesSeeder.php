@@ -15,11 +15,11 @@ class OrderTypesSeeder extends Seeder
         $orderTypes = [
             [
                 'name' => 'buy',
-                'display_name' => 'Buy',
+                'default_display_name' => 'Buy',
             ],
             [
                 'name' => 'sell',
-                'display_name' => 'Sell',
+                'default_display_name' => 'Sell',
             ],
         ];
         

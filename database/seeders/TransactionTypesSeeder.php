@@ -15,15 +15,15 @@ class TransactionTypesSeeder extends Seeder
         $transactionTypes = [
             [
                 'name' => 'deposit',
-                'display_name' => 'Deposit',
+                'default_display_name' => 'Deposit',
             ],
             [
                 'name' => 'withdrawal',
-                'display_name' => 'Withdrawal',
+                'default_display_name' => 'Withdrawal',
             ],
             [
                 'name' => 'transfer',
-                'display_name' => 'Transfer',
+                'default_display_name' => 'Transfer',
             ],
         ];
 

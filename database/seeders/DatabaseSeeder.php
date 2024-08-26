@@ -36,17 +36,25 @@ class DatabaseSeeder extends Seeder
             'class_name' => $this->seederNamespace . '\\' . str_replace('.php', '', $file)
         ]);
 
-        $seededFiles = \DB::table('seeders')->get()->pluck('file_name')->keyBy('file_name')->toArray();
-        $seeders = $files->filter(fn($file) => !$seededFiles[$file['file_name']]);
-        
-        try {
-            \DB::beginTransaction();
-            $this->call($seeders->map(fn($file) => $this->seederNamespace . '\\' . $file['class_name'])->toArray());
-            $seeders->each(fn($file) => \DB::table('seeders')->insert($file));
-            \DB::commit();
-        } catch (\Exception $e) {
-            \DB::rollBack();
-            print($e->getMessage());
+        $seededFiles = \DB::table('seeders')->get()->keyBy('file_name')->toArray();
+        $seeders = $files->filter(fn($file) => !key_exists($file['file_name'], $seededFiles));
+
+        if ($files->isEmpty()) {
+            $this->command->info('No seeders found!');
+        } else if ($seeders->isEmpty()) {
+            $this->command->info('Nothing to seed!');
+        } else if($seeders->isNotEmpty()){
+            try {
+                \DB::beginTransaction();
+                $this->call($seeders->map(fn($file) => $file['class_name'])->toArray());
+                $seeders->each(fn($file) => \DB::table('seeders')->insert($file));
+                \DB::commit();
+                $this->command->info('Database seeded!');
+            } catch (\Exception $e) {
+                \DB::rollBack();
+                $this->command->error('Seed failed!');
+                print($e->getMessage());
+            }
         }
     }
 }

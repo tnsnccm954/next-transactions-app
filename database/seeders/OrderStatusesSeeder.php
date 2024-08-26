@@ -15,23 +15,23 @@ class OrderStatusesSeeder extends Seeder
         $orderStatuses = [
             [
                 'name' => 'pending',
-                'display_name' => 'Pending',
+                'default_display_name' => 'Pending',
             ],
             [
                 'name' => 'processing',
-                'display_name' => 'Processing',
+                'default_display_name' => 'Processing',
             ],
             [
                 'name' => 'completed',
-                'display_name' => 'Completed',
+                'default_display_name' => 'Completed',
             ],
             [
                 'name' => 'cancelled',
-                'display_name' => 'Cancelled',
+                'default_display_name' => 'Cancelled',
             ],
             [
                 'name' => 'failed',
-                'display_name' => 'Failed',
+                'default_display_name' => 'Failed',
             ],
         ];
 

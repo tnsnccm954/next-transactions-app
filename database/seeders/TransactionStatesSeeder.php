@@ -15,19 +15,19 @@ class TransactionStatesSeeder extends Seeder
         $transactionStates = [
             [
                 'name' => 'pending',
-                'display_name' => 'Pending',
+                'default_display_name' => 'Pending',
             ],
             [
                 'name' => 'completed',
-                'display_name' => 'Completed',
+                'default_display_name' => 'Completed',
             ],
             [
                 'name' => 'cancelled',
-                'display_name' => 'Cancelled',
+                'default_display_name' => 'Cancelled',
             ],
             [
                 'name' => 'failed',
-                'display_name' => 'Failed',
+                'default_display_name' => 'Failed',
             ],
         ];
 
